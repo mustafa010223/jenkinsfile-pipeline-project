@@ -1,11 +1,16 @@
 pipeline {
     agent any
     stages {
-        stage('Run Python Script') {
+        stage('Build Java Code') {
             steps {
-                echo 'Running Python script inside Jenkins Pipeline'
-                sh 'python3 --version'
-                sh 'python3 pipeline.py'
+                echo 'Compiling the Java source code'
+                sh 'javac Hello.java'
+            }
+        }
+        stage('Run Java Code') {
+            steps {
+                echo 'Running the compiled Java code'
+                sh 'java Hello'
             }
         }
     }
