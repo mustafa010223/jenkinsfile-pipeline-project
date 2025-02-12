@@ -1,16 +1,10 @@
 pipeline {
     agent any
     stages {
-        stage('Build Java Code') {
+        stage('Polling SCM') {
             steps {
-                echo 'Compiling the Java source code'
-                sh 'javac Hello.java'
-            }
-        }
-        stage('Run Java Code') {
-            steps {
-                echo 'Running the compiled Java code'
-                sh 'java Hello'
+                echo 'Checking for changes in GitHub repo...'
+                sh 'echo SCM polling triggered this build'
             }
         }
     }
